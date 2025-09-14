@@ -51,7 +51,7 @@ if st.sidebar.button("Predecir salario con API"):
 # -------------------------------
 st.subheader("📋 Vista previa de datos")
 try:
-    df = pd.read_csv("Wage.csv")
+    df = pd.read_csv("Wage.csv", sep=";")
     st.dataframe(df.head())
 except Exception:
     st.warning("No se pudo cargar el dataset `Wage.csv`. Verifica que esté en el repositorio.")
