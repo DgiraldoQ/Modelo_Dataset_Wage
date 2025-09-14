@@ -3,6 +3,11 @@ from pydantic import BaseModel, Field
 from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import pandas as pd
+import google.generativeai as genai
+
+# Configuración de API Key para Google Gemini
+genai_api_key = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=genai_api_key)
 
 # Cargar modelo entrenado
 modelo = joblib.load("best_wage_model.pkl")
