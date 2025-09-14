@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field
 from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import pandas as pd
+import os
 import google.generativeai as genai
 
 # Configuración de API Key para Google Gemini
