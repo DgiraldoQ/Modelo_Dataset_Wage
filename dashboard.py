@@ -14,9 +14,15 @@ def get_api_url():
 
 API_URL = get_api_url().rstrip("/")
 
-
+# Cargar dataset para visualizaciones
+try:
+    df = pd.read_csv("Wage.csv", sep=";")
+except Exception:
+    st.error("No se pudo cargar el archivo proyecto_normalizado.csv")
+    st.stop()
 
 st.title("💼 Dashboard - Predicción de Salarios")
+
 
 # -------------------------------
 # Sección: Predicción rápida
@@ -29,7 +35,7 @@ jobclass = st.sidebar.selectbox("Trabajo", ["Industrial", "Information"])
 health = st.sidebar.selectbox("Salud", ["Regular o Mala", "Good", "Muy Buena o Excelente"])
 health_ins = st.sidebar.selectbox("¿Seguro de salud?", ["Yes", "No"])
 
-if st.sidebar.button("Predecir salario con API"):
+if st.sidebar.button("Predecir salario"):
     payload = {
         "age": age,
         "education": education,
