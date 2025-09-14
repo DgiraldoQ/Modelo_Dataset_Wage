@@ -34,7 +34,7 @@ class WageInput(BaseModel):
     health_ins: str = Field(..., example="Yes")
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "age": 30,
                 "education": "College Grad",
@@ -43,7 +43,6 @@ class WageInput(BaseModel):
                 "health_ins": "Yes"
             }
         }
-
 
 @app.get("/")
 def home():
