@@ -6,8 +6,14 @@ import os
 st.set_page_config(page_title="Predicción de Salarios", layout="wide")
 
 # Obtener la URL de la API
-API_URL = os.environ.get("API_URL", "https://modelo-dataset-wage.onrender.com")
-GOOGLE_API_KEY = os.environ.get("GOOGLE_API")
+def get_api_url():
+    try:
+        return st.secrets["API_URL"]
+    except Exception:
+        return os.environ.get("API_URL", "http://127.0.0.1:8000")
+
+API_URL = get_api_url().rstrip("/")
+
 
 
 st.title("💼 Dashboard - Predicción de Salarios")
