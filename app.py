@@ -12,7 +12,7 @@ genai_api_key = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=genai_api_key)
 
 # Cargar modelo entrenado
-modelo = joblib.load("best_wage_model.pkl")
+modelo = joblib.load("best_wage_model.joblib")
 
 app = FastAPI(title="API Predicción de Salarios")
 
