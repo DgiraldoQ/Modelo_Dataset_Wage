@@ -5,6 +5,7 @@ import joblib
 import pandas as pd
 import os
 import google.generativeai as genai
+from fastapi import HTTPException
 
 # Configuración de API Key para Google Gemini
 genai_api_key = os.getenv("GOOGLE_API_KEY")
@@ -89,9 +90,27 @@ def explicar_clasificacion_salario(clasificacion: int):
 
 @app.post("/predict")
 def predict(data: WageInput):
-    new_data = pd.DataFrame([data.dict()])
-    pred = modelo.predict(new_data)[0]
-    return {
-        "prediccion_salario": round(float(pred), 2),
-        "entrada": data.dict()
-    }
+    try:
+        # Convertir a DataFrame para el modelo
+        new_data = pd.DataFrame([data.dict()])
+
+        # Preprocesamiento si aplica (ejemplo)
+        # new_data = preprocess(new_data)
+
+        # Predicción
+        pred = modelo.predict(new_data)[0]
+
+        # Clasificación y explicación
+        clasif = resumen_salario([pred])
+        explicacion = explicar_clasificacion_salario(clasif)
+        prompt = generar_prompt_explicacion(pred, clasif)
+
+        return {
+            "prediccion_salario": round(float(pred), 2),
+            "clasificacion": clasif,
+            "explicacion": explicacion,
+            "mensaje_explicativo": prompt,
+            "entrada": data.dict()
+        }
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error en predicción: {e}")
