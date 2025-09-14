@@ -10,7 +10,7 @@ def get_api_url():
     try:
         return st.secrets["API_URL"]
     except Exception:
-        return os.environ.get("API_URL", "http://127.0.0.1:8000")
+        return os.environ.get("API_URL", "http://0.0.0.0:10000")
 
 API_URL = get_api_url().rstrip("/")
 
