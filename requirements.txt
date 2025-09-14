@@ -1,8 +1,10 @@
-streamlit
 fastapi
 uvicorn
+joblib
 pandas
 scikit-learn
-joblib
+streamlit
+plotly
 requests
-
+python-multipart
+google-generativeai
