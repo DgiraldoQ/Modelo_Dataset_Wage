@@ -10,7 +10,6 @@ from enum import Enum
 import numpy as np
 from xgboost import XGBRegressor
 
-
 # Configuración de API Key para Google Gemini
 genai_api_key = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=genai_api_key)
@@ -56,6 +55,16 @@ class WageInput(BaseModel):
 def home():
     return {"mensaje": "API de Predicción de Salarios funcionando 🚀"}
 
+def generar_prompt_explicacion(salario, clasificacion):
+    prompt = (
+        f"Soy un experto en análisis de salarios del mercado laboral Mid-Atlantic.\n"
+        f"El salario anual informado es: {salario:.2f} mil dólares.\n"
+        f"La clasificación calculada para este salario es: {clasificacion}.\n"
+        "Explica al usuario qué significa esta clasificación en el contexto del dataset Wage (compara con la media, mediana y moda del salario) "
+        "y ofrece 2 recomendaciones (económicas o profesionales) apropiadas para este nivel salarial."
+    )
+    return prompt
+
 def resumen_salario(valores):
     # valores: lista de salarios, normalmente será solo [salario]
     salario = valores[0]
@@ -84,25 +93,26 @@ def explicar_clasificacion_salario(clasificacion: int):
     }
     return explicaciones.get(clasificacion, "Clasificación desconocida")
 
-def generar_prompt_explicacion(salario, clasificacion):
-    prompt = (
-        f"Soy un experto en análisis de salarios del mercado laboral Mid-Atlantic.\n"
-        f"El salario anual informado es: {salario:.2f} mil dólares.\n"
-        f"La clasificación calculada para este salario es: {clasificacion}.\n"
-        "Explica al usuario qué significa esta clasificación en el contexto del dataset Wage (compara con la media, mediana y moda del salario) "
-        "y ofrece 2 recomendaciones (económicas o profesionales) apropiadas para este nivel salarial."
-    )
-    return prompt
-
 
 @app.post("/predict")
 def predict(data: WageInput):
     try:
         new_data = pd.DataFrame([data.dict()])
-        wage_pred = modelo.predict(new_data)[0]
+
+        # Añadir columna 'logwage' para concordar con el modelo
+        new_data['logwage'] = np.nan
+
+        # Predicción (modelo devuelve logwage)
+        log_pred = modelo.predict(new_data)[0]
+
+        # Transformar logwage a salario normal
+        wage_pred = np.exp(log_pred)
+
+        # Clasificación y explicación (puedes pasar wage_pred)
         clasif = resumen_salario([wage_pred])
         explicacion = explicar_clasificacion_salario(clasif)
         prompt = generar_prompt_explicacion(wage_pred, clasif)
+
         return {
             "prediccion_salario": round(float(wage_pred), 2),
             "clasificacion": clasif,
