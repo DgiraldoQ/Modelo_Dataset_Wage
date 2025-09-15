@@ -30,7 +30,7 @@ class WageInput(BaseModel):
     age: int = Field(..., example=30)
     education: str = Field(..., example="College Grad")
     jobclass: str = Field(..., example="Information")
-    health: str = Field(..., example="Good")
+    health: str = Field(..., example="Muy Buena o Excelente")
     health_ins: str = Field(..., example="Yes")
 
     class Config:
@@ -39,7 +39,7 @@ class WageInput(BaseModel):
                 "age": 30,
                 "education": "College Grad",
                 "jobclass": "Information",
-                "health": "Good",
+                "health": "Muy Buena o Excelente",
                 "health_ins": "Yes"
             }
         }
