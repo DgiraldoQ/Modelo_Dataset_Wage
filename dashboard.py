@@ -32,7 +32,7 @@ st.sidebar.header("Predicción rápida")
 age = st.sidebar.number_input("Edad", min_value=18, max_value=70, value=30)
 education = st.sidebar.selectbox("Educación", ["< HS Grad", "HS Grad", "Some College", "College Grad"])
 jobclass = st.sidebar.selectbox("Trabajo", ["Industrial", "Information"])
-health = st.sidebar.selectbox("Salud", ["Regular o Mala", "Good", "Muy Buena o Excelente"])
+health = st.sidebar.selectbox("Salud", ["Regular o Mala", "Muy Buena o Excelente"])
 health_ins = st.sidebar.selectbox("¿Seguro de salud?", ["Yes", "No"])
 
 if st.sidebar.button("Predecir salario"):
