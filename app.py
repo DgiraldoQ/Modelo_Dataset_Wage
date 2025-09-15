@@ -99,10 +99,7 @@ def generar_prompt_explicacion(salario, clasificacion):
 def predict(data: WageInput):
     try:
         new_data = pd.DataFrame([data.dict()])
-        print("Datos para predicción:", new_data)
-        # Predicción directa del salario (sin log)
         wage_pred = modelo.predict(new_data)[0]
-        print("Predicción wage:", wage_pred)
         clasif = resumen_salario([wage_pred])
         explicacion = explicar_clasificacion_salario(clasif)
         prompt = generar_prompt_explicacion(wage_pred, clasif)
