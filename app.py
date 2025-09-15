@@ -99,7 +99,7 @@ def predict(data: WageInput):
         new_data = pd.DataFrame([data.dict()])
 
         # Añadir columna 'logwage' para concordar con el modelo
-        new_data['logwage'] = np.nan
+        # new_data['logwage'] = np.nan
 
         # Predicción (modelo devuelve logwage)
         log_pred = modelo.predict(new_data)[0]
