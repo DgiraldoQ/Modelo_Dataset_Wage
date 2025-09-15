@@ -9,4 +9,4 @@ requests
 python-multipart
 google-generativeai
 numpy
-xgboost==1.7.6
+xgboost
