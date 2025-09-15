@@ -14,8 +14,14 @@ from xgboost import XGBRegressor
 genai_api_key = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=genai_api_key)
 
-# Cargar modelo entrenado
+# Cargar modelo guardado en .joblib
 modelo = joblib.load("best_wage_model.joblib")
+
+# Guardar modelo en formato JSON compatible
+modelo.save_model("best_wage_model.json")
+
+modelo = XGBRegressor()
+modelo.load_model("best_wage_model.json")
 
 app = FastAPI(title="API Predicción de Salarios")
 
