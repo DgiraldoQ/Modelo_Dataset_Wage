@@ -7,6 +7,8 @@ import os
 import google.generativeai as genai
 from fastapi import HTTPException
 from enum import Enum
+import numpy as np
+
 
 # Configuración de API Key para Google Gemini
 genai_api_key = os.getenv("GOOGLE_API_KEY")
