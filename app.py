@@ -95,15 +95,20 @@ def explicar_clasificacion_salario(clasificacion: int):
     return explicaciones.get(clasificacion, "Clasificación desconocida")
 
 
+usar_log = True  # Cambia a False si modelo no usó log en target
+
 @app.post("/predict")
 def predict(data: WageInput):
     try:
         new_data = pd.DataFrame([data.dict()])
         log_pred = modelo.predict(new_data)[0]
-        wage_pred = np.exp(log_pred)
-        
-        # DEBUG: Print o log para revisar predicción
-        print(f"Predicción log(salario): {log_pred}, salario estimado: {wage_pred}")
+
+        if usar_log:
+            wage_pred = np.exp(log_pred)
+        else:
+            wage_pred = log_pred
+
+        print(f"Predicción modelo: {log_pred}, salario estimado: {wage_pred}")
 
         clasif = resumen_salario([wage_pred])
         explicacion = explicar_clasificacion_salario(clasif)
@@ -113,6 +118,7 @@ def predict(data: WageInput):
             "prediccion_salario": round(float(wage_pred), 2),
             "clasificacion": clasif,
             "explicacion": explicacion,
+            "mensaje_explicativo": prompt
         }
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error en predicción: {e}")
