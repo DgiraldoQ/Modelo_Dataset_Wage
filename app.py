@@ -95,22 +95,24 @@ def explicar_clasificacion_salario(clasificacion: int):
 @app.post("/predict")
 def predict(data: WageInput):
     try:
-        # Convertir a DataFrame para el modelo
         new_data = pd.DataFrame([data.dict()])
 
-        # Preprocesamiento si aplica (ejemplo)
-        # new_data = preprocess(new_data)
+        # Añadir columna 'logwage' para concordar con el modelo
+        new_data['logwage'] = np.nan
 
-        # Predicción
-        pred = modelo.predict(new_data)[0]
+        # Predicción (modelo devuelve logwage)
+        log_pred = modelo.predict(new_data)[0]
 
-        # Clasificación y explicación
-        clasif = resumen_salario([pred])
+        # Transformar logwage a salario normal
+        wage_pred = np.exp(log_pred)
+
+        # Clasificación y explicación (puedes pasar wage_pred)
+        clasif = resumen_salario([wage_pred])
         explicacion = explicar_clasificacion_salario(clasif)
-        prompt = generar_prompt_explicacion(pred, clasif)
+        prompt = generar_prompt_explicacion(wage_pred, clasif)
 
         return {
-            "prediccion_salario": round(float(pred), 2),
+            "prediccion_salario": round(float(wage_pred), 2),
             "clasificacion": clasif,
             "explicacion": explicacion,
             "mensaje_explicativo": prompt,
