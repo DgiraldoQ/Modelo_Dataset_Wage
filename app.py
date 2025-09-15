@@ -6,6 +6,7 @@ import pandas as pd
 import os
 import google.generativeai as genai
 from fastapi import HTTPException
+from enum import Enum
 
 # Configuración de API Key para Google Gemini
 genai_api_key = os.getenv("GOOGLE_API_KEY")
@@ -26,12 +27,16 @@ app.add_middleware(
 )
 
 # Modelo de entrada para predicción
+class HealthEnum(str, Enum):
+    regular_o_mala = "Regular o Mala"
+    muy_buena_o_excelente = "Muy Buena o Excelente"
+
 class WageInput(BaseModel):
-    age: int = Field(..., example=30)
-    education: str = Field(..., example="College Grad")
-    jobclass: str = Field(..., example="Information")
-    health: str = Field(..., example="Muy Buena o Excelente")
-    health_ins: str = Field(..., example="Yes")
+    age: int
+    education: str
+    jobclass: str
+    health: HealthEnum   # <- Aquí el cambio importante
+    health_ins: str
 
     class Config:
         json_schema_extra = {
