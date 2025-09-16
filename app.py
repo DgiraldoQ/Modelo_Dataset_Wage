@@ -27,6 +27,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Definir enum para salud
+class HealthEnum(str, Enum):
+    regular_o_mala = "Regular o Mala"
+    muy_buena_o_excelente = "Muy Buena o Excelente"
+
+
 # Modelo de entrada para predicción
 class WageInput(BaseModel):
     age: int
