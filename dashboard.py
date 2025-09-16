@@ -76,3 +76,23 @@ try:
     st.dataframe(df.head())
 except Exception:
     st.warning("No se pudo cargar el dataset `Wage.csv`. Verifica que esté en el repositorio.")
+
+# -------------------------------
+# Sección: Información del proyecto
+# -------------------------------
+st.subheader("📖 Información del Proyecto")
+
+st.markdown("""
+**Título del estudio:** *Mid-Atlantic Wage Data | Análisis Estadístico*  
+**Autor:** Diego Armando Giraldo Quintero  
+**Fecha:** 18 de agosto de 2025  
+
+Este proyecto tiene como propósito analizar el dataset **Wage** del paquete ISLR, 
+aplicando técnicas de estadística descriptiva y modelos de predicción.  
+Se busca identificar cómo factores como **edad, educación, estado civil, raza, salud, 
+ocupación y seguro médico** influyen en los salarios de los trabajadores 
+de la región Mid-Atlantic (EE.UU.).  
+
+👉 Además, se construyó un **modelo predictivo con CatBoost** y se desplegó una 
+**API en Render** conectada a este dashboard en Streamlit para realizar predicciones en tiempo real.
+""")
