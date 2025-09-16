@@ -101,7 +101,7 @@ def explicar_clasificacion_salario(clasificacion: int):
     return explicaciones.get(clasificacion, "Clasificación desconocida")
 
 
-usar_log = false  # Cambia a False si modelo no usó log en target
+usar_log = False  # Cambia a False si modelo no usó log en target
 
 @app.post("/predict")
 def predict(data: WageInput):
