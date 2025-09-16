@@ -28,10 +28,6 @@ app.add_middleware(
 )
 
 # Modelo de entrada para predicción
-class HealthEnum(str, Enum):
-    regular_o_mala = "Regular o Mala"
-    muy_buena_o_excelente = "Muy Buena o Excelente"
-
 class WageInput(BaseModel):
     age: int
     education: str
@@ -41,8 +37,8 @@ class WageInput(BaseModel):
     maritl: str
     race: str
     year: int
-
-    class Config:  # ← aquí ya está alineado correctamente
+    
+    class Config:  # ojo: 4 espacios exactos, alineado con los atributos
         json_schema_extra = {
             "example": {
                 "age": 30,
