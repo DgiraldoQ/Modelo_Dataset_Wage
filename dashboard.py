@@ -30,10 +30,13 @@ st.title("💼 Dashboard - Predicción de Salarios")
 st.sidebar.header("Predicción rápida")
 
 age = st.sidebar.number_input("Edad", min_value=18, max_value=70, value=30)
-education = st.sidebar.selectbox("Educación", ["< HS Grad", "HS Grad", "Some College", "College Grad"])
-jobclass = st.sidebar.selectbox("Trabajo", ["Industrial", "Information"])
-health = st.sidebar.selectbox("Salud", ["Regular o Mala", "Muy Buena o Excelente"])
-health_ins = st.sidebar.selectbox("¿Seguro de salud?", ["Yes", "No"])
+education = st.sidebar.selectbox("Educación", df["education"].unique().tolist())
+jobclass = st.sidebar.selectbox("Trabajo", df["jobclass"].unique().tolist())
+health = st.sidebar.selectbox("Salud", df["health"].unique().tolist())
+health_ins = st.sidebar.selectbox("¿Seguro de salud?", df["health_ins"].unique().tolist())
+maritl = st.sidebar.selectbox("Estado civil", df["maritl"].unique().tolist())
+race = st.sidebar.selectbox("Raza", df["race"].unique().tolist())
+year = st.sidebar.selectbox("Año", sorted(df["year"].unique().tolist()))
 
 if st.sidebar.button("Predecir salario"):
     payload = {
@@ -41,7 +44,10 @@ if st.sidebar.button("Predecir salario"):
         "education": education,
         "jobclass": jobclass,
         "health": health,
-        "health_ins": health_ins
+        "health_ins": health_ins,
+        "maritl": maritl,
+        "race": race,
+        "year": year
     }
     try:
         r = requests.post(f"{API_URL}/predict", json=payload, timeout=15)
