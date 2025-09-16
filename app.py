@@ -36,17 +36,23 @@ class WageInput(BaseModel):
     age: int
     education: str
     jobclass: str
-    health: HealthEnum   # <- Aquí el cambio importante
+    health: HealthEnum
     health_ins: str
+    maritl: str
+    race: str
+    year: int
 
-    class Config:
+   class Config:
         json_schema_extra = {
             "example": {
                 "age": 30,
                 "education": "College Grad",
                 "jobclass": "Information",
                 "health": "Muy Buena o Excelente",
-                "health_ins": "Yes"
+                "health_ins": "Yes",
+                "maritl": "Never Married",
+                "race": "White",
+                "year": 2006
             }
         }
 
@@ -95,7 +101,7 @@ def explicar_clasificacion_salario(clasificacion: int):
     return explicaciones.get(clasificacion, "Clasificación desconocida")
 
 
-usar_log = True  # Cambia a False si modelo no usó log en target
+usar_log = false  # Cambia a False si modelo no usó log en target
 
 @app.post("/predict")
 def predict(data: WageInput):
