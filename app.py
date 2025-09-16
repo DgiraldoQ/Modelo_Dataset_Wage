@@ -42,7 +42,7 @@ class WageInput(BaseModel):
     race: str
     year: int
 
-   class Config:
+    class Config:  # ← aquí ya está alineado correctamente
         json_schema_extra = {
             "example": {
                 "age": 30,
