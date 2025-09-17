@@ -151,7 +151,12 @@ explorando la relación entre características demográficas, laborales y los ni
 - College Grad: 685 (22.8%)
 
 - Advanced Degree: 426 (14.2%)
+"")
 
+st.markdown("## education level")
+st.image("img/education_level.png", caption=education level"", width=1000)
+
+st.markdow("""
 La mayoría de los individuos alcanzaron al menos la educación secundaria completa (HS Grad) (32.4%). Un porcentaje importante continuó estudios universitarios (College Grad 22.8% y Some College 21.7%). Solo un 8.9% no finalizó la secundaria. 
 Esto muestra que la población estudiada tiene un nivel educativo relativamente alto, lo que puede influir directamente en los ingresos observados.
 
