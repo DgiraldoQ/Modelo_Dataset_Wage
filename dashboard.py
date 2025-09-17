@@ -340,7 +340,7 @@ st.markdown("""
 
 - Esto explica por qué la media (139.86) es mucho mayor que la mediana (104.92): la media está inflada por esos outliers.
 
-#Histograma Limpio (derecha)
+# Histograma Limpio (derecha)
 
 - Después de eliminar o corregir los valores atípicos, la distribución se ve mucho más clara.
 
