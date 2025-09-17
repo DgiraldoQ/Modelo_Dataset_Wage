@@ -218,7 +218,32 @@ El grupo con educación incompleta universitaria (“Some College”) presenta e
 superando incluso a graduados universitarios y con posgrado. Esto sugiere que factores adicionales, como la experiencia laboral o el sector de ocupación, influyen de forma significativa en el nivel salarial. En contraste, 
 los individuos con menor nivel educativo (“< HS Grad”) obtienen los salarios más bajos (84.10), evidenciando la brecha económica vinculada a la educación.
 
-![Resumen estadístico](https://github.com/DgiraldoQ/Modelo_Dataset_Wage/blob/main/img/educacion%20y%20salario.png)
+![Resumen estadístico](.../img/educacion_salario.png)
+
+# Análisis de Salario
+
+## Varianza:
+
+La varianza obtenida para la variable wage es de 363,248.8, lo que indica una alta dispersión en los ingresos de los individuos. 
+Dado que la varianza se mide en unidades cuadráticas, su interpretación directa no es intuitiva.
+
+## Desviacion estandar:
+
+La desviación estándar de los salarios es 602.70, lo que implica que los ingresos de los individuos presentan una gran dispersión respecto al promedio. Dado que este valor es varias veces superior a la media de los salarios (~111), 
+se concluye que la distribución salarial es altamente heterogénea, con predominio de valores bajos y la presencia de algunos ingresos extremadamente elevados que incrementan significativamente la variabilidad.
+
+## Coeficiente de desviacion
+
+El coeficiente de variación calculado para la variable wage es de 430.75%, lo que refleja una dispersión extremadamente alta respecto al salario promedio. 
+Esto significa que la variabilidad de los ingresos es más de cuatro veces superior al valor medio, evidenciando una marcada desigualdad salarial. 
+En consecuencia, la media no resulta un indicador representativo de los salarios, siendo la mediana una medida más adecuada para describir la tendencia central de los datos.
+
+## Quantiles
+
+Los quantiles muestran la distribución de los salarios en distintos puntos de corte. El 1% más bajo percibe salarios menores a 40.41, 
+mientras que aproximadamente un tercio de la población obtiene ingresos inferiores a 90. Entre los percentiles 27 y 32 la variación es mínima, 
+lo que evidencia una acumulación de observaciones en ese rango. La mediana, ubicada en 104.92, indica que el 50% de la población gana menos de este valor y el 50% restante más, lo que la convierte en una medida central más representativa que la media, dada la fuerte dispersión observada en los salarios.
+
 
 
 
