@@ -218,7 +218,7 @@ El grupo con educación incompleta universitaria (“Some College”) presenta e
 superando incluso a graduados universitarios y con posgrado. Esto sugiere que factores adicionales, como la experiencia laboral o el sector de ocupación, influyen de forma significativa en el nivel salarial. En contraste, 
 los individuos con menor nivel educativo (“< HS Grad”) obtienen los salarios más bajos (84.10), evidenciando la brecha económica vinculada a la educación.
 
-<img src="https://github.com/DgiraldoQ/Modelo_Dataset_Wage/blob/main/img/educacion_salario.png" alt="Educacion Vs Salario" width="400"/>
+ ![Educación vs Salario] (img/educacion_salario.png)
 
 # Análisis de Salario
 
@@ -244,8 +244,39 @@ Los quantiles muestran la distribución de los salarios en distintos puntos de c
 mientras que aproximadamente un tercio de la población obtiene ingresos inferiores a 90. Entre los percentiles 27 y 32 la variación es mínima, 
 lo que evidencia una acumulación de observaciones en ese rango. La mediana, ubicada en 104.92, indica que el 50% de la población gana menos de este valor y el 50% restante más, lo que la convierte en una medida central más representativa que la media, dada la fuerte dispersión observada en los salarios.
 
-![Quantiles](img/Quantiles.png)
+![Quantiles](/img/Quantiles.png)
 
+# ¿Por qué limpiar el dataset wage?
+
+- Valores extremos (outliers)
+
+- En la variable salario (wage) se observan sueldos muy altos comparados con la mayoría.
+
+- Estos valores distorsionan el promedio y pueden llevar a conclusiones equivocadas.
+👉 Ejemplo: la media es mayor a la mediana, lo que indica que los salarios muy altos están inflando el promedio.
+
+- Rango amplio de edades
+
+- Hay personas desde 18 hasta 80 años.
+
+- Algunas edades pueden no ser representativas para el análisis laboral (ej. casos atípicos en edades muy altas).
+
+- Distribuciones sesgadas
+
+- El salario presenta sesgo positivo (skewness > 1.5) → hay muchos sueldos bajos y pocos muy altos.
+
+- Esto afecta modelos estadísticos o de machine learning, que suelen asumir distribuciones más balanceadas.
+
+- Posibles datos faltantes o inconsistentes
+
+- Antes del análisis, es necesario revisar si hay NA o valores nulos en variables clave (edad, salario, educación, etc.).
+
+- También verificar registros con datos duplicados o fuera de rango.
+
+
+Tras la limpieza, el dataset wage muestra una distribución salarial más representativa: la media y la mediana son muy cercanas (≈106 vs. 104), 
+lo que elimina el sesgo que provocaban valores atípicos. 
+Esto hace que cualquier análisis o modelo construido sobre estos datos sea más robusto y fiel a la realidad laboral.
 
 |index|year|age|wage|
 |---|---|---|---|
