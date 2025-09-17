@@ -328,3 +328,29 @@ con la mayor parte de los salarios ubicados entre 50 y 200, lo que permite un an
 
 st.markdown("## histograma salario original vs salario limpio")
 st.image("img/histograma.png", caption="Quantiles", width=1000)
+
+st.markdown("""
+# Histograma Original (izquierda)
+
+- La mayoría de los datos aparecen concentrados cerca de 0, con un gran bloque de frecuencias.
+
+- Se observan valores atípicos muy altos (outliers) que llegan hasta más de 12,000.
+
+- Estos valores extremos distorsionan la distribución, haciendo que no se aprecie la forma real de los datos.
+
+- Esto explica por qué la media (139.86) es mucho mayor que la mediana (104.92): la media está inflada por esos outliers.
+
+#Histograma Limpio (derecha)
+
+- Después de eliminar o corregir los valores atípicos, la distribución se ve mucho más clara.
+
+- Ahora los datos siguen una forma aproximadamente normal (campana), concentrándose entre 50 y 150.
+
+- Se observa un rango más realista para salarios y una dispersión más representativa de la población.
+
+- La media (106.21) y la mediana (103.9) ahora están mucho más cercanas, lo que indica menos sesgo en los datos.
+
+""")
+
+st.markdown("## histograma salario original vs salario limpio")
+st.image("img/distribucion_segun_raza.png", caption="Quantiles", width=1000)
