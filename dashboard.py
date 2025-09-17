@@ -218,7 +218,7 @@ El grupo con educación incompleta universitaria (“Some College”) presenta e
 superando incluso a graduados universitarios y con posgrado. Esto sugiere que factores adicionales, como la experiencia laboral o el sector de ocupación, influyen de forma significativa en el nivel salarial. En contraste, 
 los individuos con menor nivel educativo (“< HS Grad”) obtienen los salarios más bajos (84.10), evidenciando la brecha económica vinculada a la educación.
 
-![Educacion Vs Salario](img/educacion_salario.png)
+<img src="img/educacion_salario.png" alt="Educacion Vs Salario" width="400"/>
 
 # Análisis de Salario
 
