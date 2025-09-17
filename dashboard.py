@@ -246,11 +246,14 @@ En consecuencia, la media no resulta un indicador representativo de los salarios
 Los quantiles muestran la distribución de los salarios en distintos puntos de corte. El 1% más bajo percibe salarios menores a 40.41, 
 mientras que aproximadamente un tercio de la población obtiene ingresos inferiores a 90. Entre los percentiles 27 y 32 la variación es mínima, 
 lo que evidencia una acumulación de observaciones en ese rango. La mediana, ubicada en 104.92, indica que el 50% de la población gana menos de este valor y el 50% restante más, lo que la convierte en una medida central más representativa que la media, dada la fuerte dispersión observada en los salarios.
+""")
 
 <h3>Quantiles</h3>
 <p>
   <img src="img/Quantiles.png" alt="Quantiles" width="500"/>
 </p>
+
+st.markdown("""
 
 # ¿Por qué limpiar el dataset wage?
 
