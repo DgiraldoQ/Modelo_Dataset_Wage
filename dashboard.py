@@ -248,15 +248,9 @@ mientras que aproximadamente un tercio de la población obtiene ingresos inferio
 lo que evidencia una acumulación de observaciones en ese rango. La mediana, ubicada en 104.92, indica que el 50% de la población gana menos de este valor y el 50% restante más, lo que la convierte en una medida central más representativa que la media, dada la fuerte dispersión observada en los salarios.
 """)
 
-st.markdown(
-    """
-    <h3>Quantiles</h3>
-    <p>
-      <img src="img/Quantiles.png" alt="Quantiles" width="500"/>
-    </p>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("## Quantiles")
+st.image("img/Quantiles.png", caption="Quantiles", width=500)
+
 
 
 st.markdown("""
