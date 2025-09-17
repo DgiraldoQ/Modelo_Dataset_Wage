@@ -233,4 +233,4 @@ los individuos con menor nivel educativo (“< HS Grad”) obtienen los salarios
 |75%|2008\.0|50\.0|127\.12|
 |max|2009\.0|80\.0|193\.45|
 
-)
+""")
