@@ -300,4 +300,21 @@ Esto hace que cualquier análisis o modelo construido sobre estos datos sea más
 |75%|2008\.0|50\.0|127\.12|
 |max|2009\.0|80\.0|193\.45|
 
+# Despues de la limpieza realizamos la comparacion
+
+La comparación de medidas de tendencia central muestra el impacto de los valores atípicos en la distribución salarial. 
+La media original (139.87) estaba claramente distorsionada, mientras que tras la limpieza se alinea con la mediana (106.22 vs. 103.90), reflejando una distribución más simétrica y representativa. La mediana, por su robustez, apenas se vio afectada, y la moda permaneció constante en 40. 
+Esto confirma que la depuración de datos permitió obtener un panorama mucho más realista del comportamiento salarial.
+
+| Medida  | Original | Limpio  |
+|---------|----------|---------|
+| Media   | 139.8698 | 106.217 |
+| Mediana | 104.9200 | 103.900 |
+| Moda    | 118.8800 | 118.880 |
+
+# Visualizar antes y después (boxplots o histogramas)
+
 """)
+
+st.markdown("## Quantiles")
+st.image("img/salariooriginal_vs_salariolimpio.png", caption="Quantiles", width=1000)
