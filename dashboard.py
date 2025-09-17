@@ -316,5 +316,15 @@ Esto confirma que la depuración de datos permitió obtener un panorama mucho m�
 
 """)
 
-st.markdown("## Quantiles")
+st.markdown("## boxplot salario original vs salario limpio")
 st.image("img/salariooriginal_vs_salariolimpio.png", caption="Quantiles", width=1000)
+
+st.markdown("""
+La comparación entre ambos histogramas muestra que, en el dataset original, la presencia de valores atípicos (outliers) 
+generaba una escala distorsionada que ocultaba la distribución de la mayoría de los salarios. Tras la limpieza de datos, se observa una distribución clara, 
+con la mayor parte de los salarios ubicados entre 50 y 200, lo que permite un análisis estadístico más representativo y confiable.
+
+""")
+
+st.markdown("## histograma salario original vs salario limpio")
+st.image("img/histograma.png", caption="Quantiles", width=1000)
