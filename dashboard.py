@@ -327,7 +327,7 @@ con la mayor parte de los salarios ubicados entre 50 y 200, lo que permite un an
 """)
 
 st.markdown("## histograma salario original vs salario limpio")
-st.image("img/histograma.png", caption="Quantiles", width=1000)
+st.image("img/histograma.png", caption="histograma", width=1000)
 
 st.markdown("""
 # Histograma Original (izquierda)
@@ -353,4 +353,127 @@ st.markdown("""
 """)
 
 st.markdown("## histograma salario original vs salario limpio")
-st.image("img/distribucion_segun_raza.png", caption="Quantiles", width=1000)
+st.image("img/distribucion_segun_raza.png", caption="histograma", width=1000)
+
+st.markdown("""
+
+- Medianas (líneas negras dentro de cada caja):
+
+Asian tiene la mediana más alta de salario.
+
+Le siguen White, luego Black, y finalmente Other con la mediana más baja.
+
+- Dispersión (altura de las cajas):
+
+Asian y White muestran mayor variabilidad en los salarios, indicando que dentro de estos grupos hay más diferencias en ingresos.
+
+Other tiene una caja más compacta, reflejando menos dispersión.
+
+- Valores atípicos (puntos fuera de los bigotes):
+
+Se observan outliers en Black, Other y White, lo que significa que algunos individuos tienen salarios mucho más bajos o altos respecto al resto de su grupo.
+
+- Rangos:
+
+Todos los grupos presentan salarios que oscilan aproximadamente entre 50 y 200.
+
+Sin embargo, las diferencias en medianas sugieren cierta desigualdad salarial entre razas.
+
+# Comparar medidas de dispersión:
+
+- La varianza se redujo drásticamente. Antes, los salarios estaban extremadamente dispersos debido a los outliers (valores de hasta 13,900). 
+Después de la limpieza, la varianza baja a un nivel razonable, indicando que los salarios están mucho más concentrados alrededor de su media.
+
+|              | Valor      |
+|--------------|------------|
+| var_original | 363605.7368 |
+| var_limpio   |   936.1736 |
+
+- La desviación estándar nos dice cuánto, en promedio, se alejan los salarios de la media.
+
+Antes: los salarios se desviaban ≈603 unidades, lo cual es irreal porque la mayoría de sueldos estaban alrededor de 100.
+
+Después: la desviación estándar baja a ≈30.6, mostrando que ahora la mayoría de sueldos se alejan poco de la media (~106).
+
+|              | Valor     |
+|--------------|-----------|
+| sd_original  | 602.99729 |
+| sd_limpio    |  30.59695 |
+
+- El CV mide la variabilidad relativa (desviación estándar respecto a la media):
+Antes: 431% es una dispersión extremadamente alta → los salarios no eran representativos porque estaban dominados por unos pocos valores extremos.
+
+Después: 28.8% indica una variabilidad moderada → ahora los datos son más homogéneos y permiten un análisis más confiable.
+
+|              | Valor     |
+|--------------|-----------|
+| cv_original  | 431.11313 |
+| cv_limpio    |  28.80607 |
+
+# ¿Qué aprendimos de los datos?
+
+- Calidad de los datos El análisis inicial evidenció la presencia de valores atípicos extremos en la variable salario, lo que distorsionaba las medidas de 
+tendencia central y dispersión. Tras el proceso de limpieza y depuración, el conjunto de datos resultante es más representativo, consistente y adecuado para 
+el análisis estadístico.
+
+Distribución salarial Se observó que la mayoría de los salarios se concentran en un rango comprendido entre 84 y 127 unidades, 
+con un promedio de aproximadamente 106, lo cual indica un mercado laboral con niveles de ingresos relativamente homogéneos una vez eliminados los valores atípicos.
+
+- Factores determinantes del salario
+
+Nivel educativo: se confirma que es un factor determinante en los ingresos. Los individuos con educación superior (College Grad o Advanced Degree) 
+presentan los salarios promedio más altos, lo que sugiere que la formación académica es un mecanismo clave de movilidad económica.
+
+Edad: los salarios tienden a incrementarse en los grupos etarios intermedios (30–50 años), reflejando la relación entre experiencia laboral y remuneración.
+
+Estado de salud: quienes reportan una salud “Muy buena o excelente” muestran en promedio salarios ligeramente más altos, 
+lo que podría estar asociado a una mayor productividad y continuidad en la actividad laboral.
+
+- Medidas de dispersión y homogeneidad La reducción del coeficiente de variación de más del 430% a menos del 29% evidencia que el conjunto de datos depurado 
+ofrece una visión mucho más estable y confiable de la población analizada, reduciendo la influencia de valores extremos y mejorando la precisión de las 
+conclusiones.
+
+Valor del análisis estadístico descriptivo La aplicación de medidas numéricas, tablas de frecuencias y representaciones gráficas permitió comprender de forma 
+integral la realidad contenida en los datos, aportando insumos útiles para la toma de decisiones en contextos laborales, educativos y de políticas sociales.
+
+# Modelo de Machine Learning:
+
+## ¿Qué es CatBoost?
+
+- CatBoost es un algoritmo de gradient boosting desarrollado por Yandex.
+
+- Es parte de la familia de modelos tipo árboles de decisión potenciados (como XGBoost o LightGBM).
+
+- Está diseñado especialmente para manejar datos categóricos de manera eficiente (por eso el nombre: Categorical Boosting).
+
+# ¿Cómo funciona?
+
+- Construye muchos árboles de decisión pequeños y débiles.
+
+- Cada nuevo árbol corrige los errores del anterior → va “aprendiendo en ensamble”.
+
+- Usa una técnica llamada Ordered Boosting para evitar overfitting.
+
+- Maneja automáticamente las variables categóricas sin necesidad de transformarlas manualmente (one-hot encoding).
+
+# 🔹 Interpretación del gráfico de importancia de variables
+
+## El gráfico muestra qué variables pesan más en la predicción de wage:
+
+- logwage → es la más importante con diferencia, lo que tiene sentido porque suele usarse como transformación del salario.
+
+- education → la segunda más influyente: la escolaridad impacta directamente en el nivel salarial.
+
+- health_ins y maritl → también aportan, pero menos.
+
+- sexo, raza y jobclass → tuvieron poca relevancia en este modelo (aunque en otros contextos podrían ser importantes).
+
+Se eligió CatBoost porque es un modelo avanzado de gradient boosting, diseñado para trabajar con datos categóricos y tabulares, 
+como los de salarios. Su ventaja es que maneja bien outliers, reduce el sobreajuste y requiere poca preparación de datos. 
+El análisis de importancia de variables muestra que el salario transformado en logaritmo y la educación son los factores más determinantes en la predicción, 
+mientras que otras características como raza o sexo tuvieron un impacto mucho menor.
+
+""")
+
+st.markdown("## Grafico de Barras")
+st.image("img/importancia_variables.png", caption="grafico de barras", width=1000)
