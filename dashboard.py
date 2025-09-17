@@ -235,6 +235,18 @@ Dado que la varianza se mide en unidades cuadráticas, su interpretación direct
 La desviación estándar de los salarios es 602.70, lo que implica que los ingresos de los individuos presentan una gran dispersión respecto al promedio. Dado que este valor es varias veces superior a la media de los salarios (~111), 
 se concluye que la distribución salarial es altamente heterogénea, con predominio de valores bajos y la presencia de algunos ingresos extremadamente elevados que incrementan significativamente la variabilidad.
 
+# Rango:
+
+| Rango  | Valor   |
+|--------|---------|
+| Mínimo | 20.09   |
+| Máximo | 13900.00 |
+
+Es la diferencia entre el valor máximo y el valor mínimo de nuestro conjunto de datos, y sirve como una medida simple para conocer 
+la dispersión o variabilidad de esos datos. Un rango amplio indica que los datos están muy dispersos, 
+mientras que un rango estrecho sugiere que están más concentrados, en nuestro caso nuestros datos estan muy dispersos.
+
+
 ## Coeficiente de desviacion
 
 El coeficiente de variación calculado para la variable wage es de 430.75%, lo que refleja una dispersión extremadamente alta respecto al salario promedio. 
@@ -245,7 +257,8 @@ En consecuencia, la media no resulta un indicador representativo de los salarios
 
 Los quantiles muestran la distribución de los salarios en distintos puntos de corte. El 1% más bajo percibe salarios menores a 40.41, 
 mientras que aproximadamente un tercio de la población obtiene ingresos inferiores a 90. Entre los percentiles 27 y 32 la variación es mínima, 
-lo que evidencia una acumulación de observaciones en ese rango. La mediana, ubicada en 104.92, indica que el 50% de la población gana menos de este valor y el 50% restante más, lo que la convierte en una medida central más representativa que la media, dada la fuerte dispersión observada en los salarios.
+lo que evidencia una acumulación de observaciones en ese rango. La mediana, ubicada en 104.92, indica que el 50% de la población gana menos de 
+este valor y el 50% restante más, lo que la convierte en una medida central más representativa que la media, dada la fuerte dispersión observada en los salarios.
 
 
 """)
