@@ -218,7 +218,7 @@ El grupo con educación incompleta universitaria (“Some College”) presenta e
 superando incluso a graduados universitarios y con posgrado. Esto sugiere que factores adicionales, como la experiencia laboral o el sector de ocupación, influyen de forma significativa en el nivel salarial. En contraste, 
 los individuos con menor nivel educativo (“< HS Grad”) obtienen los salarios más bajos (84.10), evidenciando la brecha económica vinculada a la educación.
 
-![Educacion Vs Salario](.../img/educacion_salario.png)
+![Educacion Vs Salario](img/educacion_salario.png)
 
 # Análisis de Salario
 
@@ -244,7 +244,7 @@ Los quantiles muestran la distribución de los salarios en distintos puntos de c
 mientras que aproximadamente un tercio de la población obtiene ingresos inferiores a 90. Entre los percentiles 27 y 32 la variación es mínima, 
 lo que evidencia una acumulación de observaciones en ese rango. La mediana, ubicada en 104.92, indica que el 50% de la población gana menos de este valor y el 50% restante más, lo que la convierte en una medida central más representativa que la media, dada la fuerte dispersión observada en los salarios.
 
-![Educacion Vs Salario](.../Quantiles.png)
+![Quantiles](img/Quantiles.png)
 
 
 |index|year|age|wage|
