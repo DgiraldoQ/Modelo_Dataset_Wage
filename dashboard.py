@@ -249,7 +249,7 @@ lo que evidencia una acumulación de observaciones en ese rango. La mediana, ubi
 """)
 
 st.markdown("## Quantiles")
-st.image("img/Quantiles.png", caption="Quantiles", width=500)
+st.image("img/Quantiles.png", caption="Quantiles", width=1000)
 
 
 
